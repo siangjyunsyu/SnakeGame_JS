@@ -1,0 +1,92 @@
+@charset "UTF-8";
+.container {
+  margin: 0;
+  padding: 0;
+  height: 880px;
+  background: url(../img/bg/background-01.svg) no-repeat;
+  background-size: cover;
+  position: ab;
+}
+
+.btn {
+  margin: 30px 0 0 10px;
+  font-family: 微軟正黑體;
+}
+.btn button {
+  box-shadow: 1px 2px 3px rgb(144, 143, 143);
+  width: 120px;
+  height: 45px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  align-items: center;
+  text-align: center;
+  color: #0b346e;
+  background-color: #81c7d4;
+  border: none;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+@-webkit-keyframes frogAnimation {
+  0% {
+    box-shadow: 0 0 10px white;
+  }
+  50% {
+    box-shadow: 0 0 200px white;
+  }
+  100% {
+    box-shadow: 0 0 10px white;
+  }
+}
+
+@keyframes frogAnimation {
+  0% {
+    box-shadow: 0 0 10px white;
+  }
+  50% {
+    box-shadow: 0 0 200px white;
+  }
+  100% {
+    box-shadow: 0 0 10px white;
+  }
+}
+main {
+  display: flex;
+}
+
+.map {
+  margin: 190px auto;
+  width: 1200px;
+  height: 560px;
+  background: url(../img/bg/background-02.svg);
+  background-repeat: repeat;
+  position: relative;
+  box-shadow: 0 0 100px #333 inset, 0 0 30px white;
+  justify-content: center;
+}
+
+div.frog {
+  background-image: url(../img/frog/frog20x20.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-animation: frogAnimation 1s linear infinite;
+          animation: frogAnimation 1s linear infinite;
+}
+
+div.head {
+  background-image: url(../img/hand/snake-head20x20_right.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+div.body {
+  background-image: url(../img/body/snake-body20x20_left.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.map > div {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+}

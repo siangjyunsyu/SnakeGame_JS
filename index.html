@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Snake Game</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../snake_game/css/style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <!-- place navbar here -->
+        <div class="btn">
+          <button id="start">Start</button>
+          <button id="pause">Stop</button>
+          <button id="restart">Restart</button>
+        </div>
+      </header>
+      <main>
+        <div class="map"></div>
+        <!-- <audio src="../snake_game/music/bgm.mp3" autoplay></audio> -->
+      </main>
+      <footer>
+        <!-- place footer here -->
+      </footer>
+    </div>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../snake_game/JS/frog.js"></script>
+    <script src="../snake_game/JS/snake.js"></script>
+    <script src="../snake_game/JS/game.js"></script>
+    <script>
+      const game = new Game('.map');
+
+      const start = document.querySelector('#start');
+      const pause = document.querySelector('#pause');
+      const restart = document.querySelector('#restart');
+      start.onclick = function () {
+        game.gameStart();
+      };
+      pause.onclick = function () {
+        game.pause();
+      };
+      restart.onclick = function () {
+        game.restart();
+      };
+
+      // 鍵盤監聽 (左:37  上:38  右:39  下:40)
+      document.onkeydown = function (e) {
+        // console.log　結果：左:37  上:38  右:39  下:40  enter:13  空格:32
+        // console.log(e.keyCode);
+        switch (e.keyCode) {
+          case 37: // 左
+            game.change('left');
+            break;
+          case 38: // 上
+            game.change('top');
+            break;
+          case 39: // 右
+            game.change('right');
+            break;
+          case 40: // 下
+            game.change('bottom');
+            break;
+          case 90: // Z
+            game.gameStart();
+            break;
+          case 88: // x
+            game.pause();
+            break;
+        }
+      };
+    </script>
+  </body>
+</html>

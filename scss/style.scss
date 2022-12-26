@@ -1,0 +1,128 @@
+// 視窗區
+@mixin container {
+  margin: 0;
+  padding: 0;
+  height: 880px;
+  background: url(../img/bg/background-01.svg) no-repeat;
+  background-size: cover;
+  position: ab;
+}
+
+.container {
+  @include container;
+}
+
+// header 按鈕區
+
+@mixin btn {
+  margin: 30px 0 0 10px;
+  font-family: 微軟正黑體;
+}
+@mixin btn-box {
+  width: 120px;
+  height: 45px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  align-items: center;
+  text-align: center;
+  color: #0b346e;
+  background-color: #81c7d4;
+  border: none;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+@mixin shadow {
+  box-shadow: 1px 2px 3px rgb(144, 143, 143);
+}
+
+.btn {
+  @include btn;
+  & button {
+    @include shadow;
+    @include btn-box;
+  }
+}
+
+// main 遊戲區
+
+@mixin main {
+  display: flex;
+}
+
+@mixin map {
+  margin: 190px auto;
+  width: 1200px; // 1200/40 = 30
+  height: 560px; //560/40 = 14
+  background: url(../img/bg/background-02.svg);
+  background-repeat: repeat;
+  position: relative;
+  box-shadow: 0 0 100px #333 inset, 0 0 30px white;
+  justify-content: center;
+}
+
+@mixin head {
+  background-image: url(../img/hand/snake-head20x20_right.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@mixin body {
+  background-image: url(../img/body/snake-body20x20_left.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@mixin frog {
+  // background: repeating-radial-gradient(#ffc000, #ff4100);
+  background-image: url(../img/frog/frog20x20.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: frogAnimation 1s linear infinite;
+}
+
+@keyframes frogAnimation {
+  0% {
+    box-shadow: 0 0 10px white;
+  }
+  50% {
+    box-shadow: 0 0 200px white;
+  }
+  100% {
+    box-shadow: 0 0 10px white;
+  }
+}
+
+main {
+  @include main;
+}
+
+.map {
+  @include map;
+}
+
+div.frog {
+  @include frog;
+}
+
+div.head {
+  @include head;
+}
+
+div.body {
+  @include body();
+}
+
+// 基本的權重大小（最左邊的權重最高，最右邊的權重最低）：inline style > ID > Class > Element > *
+// 全站預設值為 0-0-0-0，所以只要權重超過就可以覆蓋過它的預設。 */
+// 所有的 Element 的權重都是 0-0-0-1 */
+// class 在 html 上面會寫成 class="box" ，在 css 內長這樣 .box ，前方會有一個點'.'，每一個 class 的權重都是 0-0-1-0
+// id 在 html 上面是這樣寫的 id="home" ，在 css 內長這樣 #home ，前方會帶井字號，每一個 id 的權重都是 0-1-0-0
+// 所謂的 inline style attribute 就是寫在 html 行內的 style，inline style attribute 的權重為 1-0-0-0
+.map > div {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  // border-radius: 50%;
+  // box-shadow: 0 0 10px rgb(255, 140, 0);
+}
